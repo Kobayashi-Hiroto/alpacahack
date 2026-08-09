@@ -16,6 +16,7 @@ plumbum==2.0.2
 psutil==7.2.2
 pwntools==4.15.0
 pycparser==3.0
+pycryptodome==3.23.0
 pyelftools==0.33
 Pygments==2.20.0
 PyNaCl==1.6.2
