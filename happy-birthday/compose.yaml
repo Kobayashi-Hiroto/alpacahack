@@ -1,0 +1,8 @@
+services:
+  challenge:
+    build: .
+    environment:
+      - FLAG=Alpaca{REDACTED}
+    ports:
+      - "${PORT:-1337}:1337"
+    restart: unless-stopped
