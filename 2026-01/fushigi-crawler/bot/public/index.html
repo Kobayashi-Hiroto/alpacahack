@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.9.5.min.css" />
+  <title>Crawl Request</title>
+</head>
+
+<body>
+  <section>
+    <article>
+      <h2>Crawl Request</h2>
+      <form>
+        <fieldset>
+          <input name="url" type="url" placeholder="https://example.com" required
+            style="width: 100%; max-width: 500px;" />
+          <button name="send" type="submit">Send</button>
+          <p><output name="result"></output></p>
+        </fieldset>
+      </form>
+    </article>
+  </section>
+  <script type="module">
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      form.send.disabled = true;
+      form.send.textContent = "Sending...";
+
+      try {
+        const res = await fetch("/api/crawl-request", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: form.url.value.trim() }),
+        });
+        const body = await res.text();
+        form.result.textContent = `${res.status}: ${body || "OK"}`;
+      } catch (err) {
+        form.result.textContent = err;
+      }
+
+      form.send.disabled = false;
+      form.send.textContent = "Send";
+    });
+  </script>
+</body>
+
+</html>

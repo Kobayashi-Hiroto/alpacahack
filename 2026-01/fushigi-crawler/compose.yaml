@@ -1,0 +1,10 @@
+services:
+  bot:
+    build: ./bot
+    restart: unless-stopped
+    init: true
+    ports:
+      - ${PORT:-3333}:3333
+    environment:
+      - FLAG=Alpaca{REDACTED}
+
