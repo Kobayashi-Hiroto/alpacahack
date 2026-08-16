@@ -1,0 +1,21 @@
+xor_flag = bytes([0x46, 0x6b, 0x77, 0x66, 100, 0x66, 0x7c, 0x6b, 0x72, 100, 0x6c, 0x7e, 0x7a])
+
+for i in range(len(xor_flag)):
+    print(chr(xor_flag[i] ^ 7), end="")
+
+print()
+
+# use ghidra
+# xor_flag[0] = 0x46;
+# xor_flag[1] = 0x6b;
+# xor_flag[2] = 0x77;
+# xor_flag[3] = 0x66;
+# xor_flag[4] = 100;
+# xor_flag[5] = 0x66;
+# xor_flag[6] = 0x7c;
+# xor_flag[7] = 0x6b;
+# xor_flag[8] = 0x72;
+# xor_flag[9] = 100;
+# xor_flag[10] = 0x6c;
+# xor_flag[0xb] = 0x7e;
+# xor_flag[0xc] = 0x7a;
