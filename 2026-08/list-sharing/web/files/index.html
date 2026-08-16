@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your List!</title>
+</head>
+<body>
+  <main>
+    <h1>Share Your List!</h1>
+    <div id="list-container"></div>
+  </main> 
+
+  <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const list = (queryParams.get('list') || '').split(/\s+/);
+
+    const listContainer = document.getElementById('list-container');
+    if(list.length === 1 && list[0] === '') {
+      listContainer.innerHTML = '<p>No items in the list.</p>';
+    } else {
+      const ul = document.createElement('ul');
+      for(const item of list) {
+        const li = document.createElement('li');
+        li.innerHTML = item;
+        ul.appendChild(li);
+      }
+      listContainer.appendChild(ul);
+    }
+  </script>
+</body>
+</html>
